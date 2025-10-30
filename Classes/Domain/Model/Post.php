@@ -24,6 +24,14 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Post extends AbstractEntity
 {
     /**
+     * single_view_layout
+     *
+     * @var string
+     */
+    #[Validate(['validator' => 'NotEmpty'])]
+    protected $singleViewLayout = '';
+
+    /**
      * title
      *
      * @var string
@@ -100,6 +108,22 @@ class Post extends AbstractEntity
     {
         $this->categories =  new ObjectStorage();
         $this->images = new ObjectStorage();
+    }
+
+    /**
+     * Returns the single_view_layout
+     */
+    public function getSingleViewLayout(): string
+    {
+        return $this->singleViewLayout;
+    }
+
+    /**
+     * Sets the single_view_layout
+     */
+    public function setSingleViewLayout(string $singleViewLayout): void
+    {
+        $this->singleViewLayout = $singleViewLayout;
     }
 
     /**

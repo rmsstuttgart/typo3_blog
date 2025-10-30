@@ -1,0 +1,20 @@
+<div class="post-navigation">
+	<a href="{f:uri.action(action:'show', pageUid:'{settings.singlePid}', arguments:'{post:prevPost}')}"
+		class="post-prev">
+		<div class="post-prev-title">
+			<span>prev</span>
+			{prevPost.title}
+		</div>
+	</a>
+
+	<a href="{f:uri.page(pageUid:'{settings.listPid}')}" class="post-all">
+		<i class="icon-grid"> </i>
+	</a>
+	<a href="{f:uri.action(action:'show', pageUid:'{settings.singlePid}', arguments:'{post:nextPost}')}"
+		class="post-next">
+		<div class="post-next-title">
+			<span>next</span>
+			{nextPost.title}
+		</div>
+	</a>
+</div>

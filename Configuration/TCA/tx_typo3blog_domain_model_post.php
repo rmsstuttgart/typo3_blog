@@ -21,11 +21,11 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,teaser,keywords,content,slug',
+        'searchFields' => 'title,teaser,keywords,content,slug,single_view_layout',
         'iconfile' => 'EXT:typo3_blog/Resources/Public/Icons/tx_typo3blog_domain_model_post.gif',
     ],
     'types' => [
-        '1' => ['showitem' => 'title, teaser, keywords, slug, images, content, categories, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
+        '1' => ['showitem' => 'single_view_layout, title, teaser, keywords, slug, images, content, categories, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language, sys_language_uid, l10n_parent, l10n_diffsource, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, hidden, starttime, endtime'],
     ],
     'columns' => [
         'crdate' => [
@@ -96,6 +96,22 @@ return [
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
+            ],
+        ],
+
+        'single_view_layout' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:typo3_blog/Resources/Private/Language/locallang_db.xlf:tx_typo3blog_domain_model_post.single_view_layout',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['label' => 'Header Image (default)', 'value' => 'header_image'],
+                    ['label' => 'Text left, image right', 'value' => 'text_left_image_right'],
+                    ['label' => 'Text right, image left', 'value' => 'text_right_image_left'],
+                ],
+                'default' => 'header_image',
+                'required' => true,
             ],
         ],
 

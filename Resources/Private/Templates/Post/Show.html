@@ -14,71 +14,86 @@ Show.html: keep
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="content">
-
     <div class="row">
-
-        <!-- content -->
         <div class="content col-lg-12">
-            <!-- Blog -->
             <div id="typo3_blog" class="single-post">
-                <!-- Post single item-->
                 <div class="post-item">
                     <div class="post-item-wrap">
 
-                        <div class="post-image">
-                            <img alt="" src="{f:uri.image(image:post.images.0, width:1200, height:'400c')}">
-                        </div>
+                        <f:switch expression="{post.singleViewLayout}">
+                            <f:case value="text_left_image_right">
+                                <f:render section="text_left_image_right" arguments="{post: post}" />
+                            </f:case>
+                            <f:case value="text_right_image_left">
+                                <f:render section="text_right_image_left" arguments="{post: post}" />
+                            </f:case>
+                            <f:defaultCase>
+                                <f:render section="layout_header_image" arguments="{post: post}" />
+                            </f:defaultCase>
+                        </f:switch>
 
                         <div class="frame-layout-0">
-
                             <div class="container col-lg-12">
-
-                                <div class="post-item-description margin-top">
-                                    <h1>{post.title}</h1>
-                                    <div class="post-meta">
-                                        <span class="post-meta-date">
-                                            <i class="fa fa-calendar-o"></i>
-                                            <f:format.date format="d.m.Y">{post.crdate}</f:format.date>
-                                        </span>
-                                        <span class="post-meta-category">
-                                            <i class="fa fa-tag"></i>
-                                            <f:for each="{post.categories}" as="category" iteration="loginNewsIterator">
-                                                {category.name},
-                                            </f:for>
-                                        </span>
-                                    </div>
-                                    <div class="margin-bottom">
-                                        <f:format.html>{post.teaser}</f:format.html>
-                                    </div>
-                                    <f:format.html>{post.content}</f:format.html>
-                                </div>
-
-                                <div class="post-navigation">
-                                    <a href="{f:uri.action(action:'show', pageUid:'{settings.singlePid}', arguments:'{post:prevPost}')}"
-                                        class="post-prev">
-                                        <div class="post-prev-title">
-                                            <span>prev</span>
-                                            {prevPost.title}
-                                        </div>
-                                    </a>
-
-                                    <a href="{f:uri.page(pageUid:'{settings.listPid}')}" class="post-all">
-                                        <i class="icon-grid"> </i>
-                                    </a>
-                                    <a href="{f:uri.action(action:'show', pageUid:'{settings.singlePid}', arguments:'{post:nextPost}')}"
-                                        class="post-next">
-                                        <div class="post-next-title">
-                                            <span>next</span>
-                                            {nextPost.title}
-                                        </div>
-                                    </a>
-                                </div>
-
+                                <f:render partial="Post/PostNavigation"
+                                    arguments="{post: post, prevPost: prevPost, nextPost: nextPost, settings: settings}" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- end: Post single item-->
+            </div>
+        </div>
+    </div>
+</f:section>
+
+<f:section name="layout_header_image">
+    <f:render partial="Post/PostImageHeader" arguments="{post: post}" />
+    <div class="frame-layout-0">
+        <div class="container col-lg-12 mt-5">
+            <f:render partial="Post/PostHeadline" arguments="{post: post}" />
+            <f:render partial="Post/PostMetadata" arguments="{post: post}" />
+        </div>
+        <div class="container col-lg-12">
+            <f:render partial="Post/PostTextContent" arguments="{post: post}" />
+        </div>
+    </div>
+</f:section>
+
+<f:section name="text_left_image_right">
+    <div class="frame-layout-0">
+        <div class="container">
+            <div class="row">
+                <div class="container col-lg-12">
+                    <f:render partial="Post/PostHeadline" arguments="{post: post}" />
+                    <f:render partial="Post/PostMetadata" arguments="{post: post}" />
+                </div>
+                <div class="container col-lg-4 d-sm-block d-lg-none">
+                    <f:render partial="Post/PostImageLeftRight" arguments="{post: post}" />
+                </div>
+                <div class="container col-lg-8">
+                    <f:render partial="Post/PostTextContent" arguments="{post: post}" />
+                </div>
+                <div class="container col-lg-4 d-sm-none d-md-none d-lg-block">
+                    <f:render partial="Post/PostImageLeftRight" arguments="{post: post}" />
+                </div>
+            </div>
+        </div>
+    </div>
+</f:section>
+
+<f:section name="text_right_image_left">
+    <div class="frame-layout-0">
+        <div class="container">
+            <div class="row">
+                <div class="container col-lg-12">
+                    <f:render partial="Post/PostHeadline" arguments="{post: post}" />
+                    <f:render partial="Post/PostMetadata" arguments="{post: post}" />
+                </div>
+                <div class="container col-lg-4">
+                    <f:render partial="Post/PostImageLeftRight" arguments="{post: post}" />
+                </div>
+                <div class="container col-lg-8">
+                    <f:render partial="Post/PostTextContent" arguments="{post: post}" />
+                </div>
             </div>
         </div>
     </div>

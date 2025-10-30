@@ -1,0 +1,17 @@
+<div class="post-item-description">
+	<div class="post-meta">
+		<span class="post-meta-date">
+			<i class="fa fa-calendar-o"></i>
+			<f:format.date format="d.m.Y">{post.crdate}</f:format.date>
+		</span>
+		<span class="post-meta-category">
+			<i class="fa fa-tag"></i>
+			<f:for each="{post.categories}" as="category" iteration="loginNewsIterator">
+				{category.name},
+			</f:for>
+		</span>
+	</div>
+	<div class="margin-bottom">
+		<f:format.html>{post.teaser}</f:format.html>
+	</div>
+</div>

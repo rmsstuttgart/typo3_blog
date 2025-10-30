@@ -9,6 +9,9 @@
 			<trans-unit id="tx_typo3blog_domain_model_post.title" resname="tx_typo3blog_domain_model_post.title">
 				<source>Title</source>
 			</trans-unit>
+			<trans-unit id="tx_typo3blog_domain_model_post.single_view_layout" resname="tx_typo3blog_domain_model_post.single_view_layout">
+				<source>Single View Layout</source>
+			</trans-unit>
 			<trans-unit id="tx_typo3blog_domain_model_post.teaser" resname="tx_typo3blog_domain_model_post.teaser">
 				<source>Teaser</source>
 			</trans-unit>

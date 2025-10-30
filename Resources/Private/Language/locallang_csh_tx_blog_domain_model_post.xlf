@@ -6,6 +6,9 @@
 			<trans-unit id="title.description" resname="title.description">
 				<source>title</source>
 			</trans-unit>
+			<trans-unit id="single_view_layout.description" resname="single_view_layout.description">
+				<source>typo3_blog single_view_layout</source>
+			</trans-unit>
 			<trans-unit id="teaser.description" resname="teaser.description">
 				<source>typo3_blog teaser</source>
 			</trans-unit>
